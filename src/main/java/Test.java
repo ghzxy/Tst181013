@@ -12,6 +12,7 @@ public class Test {
        list.add(t);
         System.out.println("----"+list.get(0).a);
         t.a=1;
+
         t=null;
         System.out.println("----"+list.get(0).a);
     }
