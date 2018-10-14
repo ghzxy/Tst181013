@@ -1,24 +1,47 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Test {
-   static Tst t;
-   static List<Tst> list=new ArrayList<Tst>();
+    static List<String> lists = new ArrayList<>();
+
     public static void main(String[] args) {
+        //lambdaTest();
+        //setTest();
+        //fx("hello world!");
+        //fx(100);
 
-
-        t= new Tst();
-        t.a=0;
-       list.add(t);
-        System.out.println("----"+list.get(0).a);
-        t.a=1;
-        //TEST   FFF
-
-        t=null;
-        System.out.println("----"+list.get(0).a);
+      Demo demo=  new Demo<String>();
+      demo.fx("abc");
     }
 
-   static class  Tst{
-        int a;
+
+    static void setTest() {
+        Set sets = new HashSet<String>();
+        sets.add("Are");
+        sets.add("you");
+        sets.add("ok");
+        sets.add("?");
+
+        sets.forEach((str) -> System.out.println(str));
+    }
+
+
+    static void lambdaTest() {
+        String[] strings = {"i", "am", "a", "coder", "hello", "world", "are", "you", "ok", "?"};
+
+        lists = Arrays.asList(strings);
+
+        lists.forEach((string) -> System.out.println(string));
+        new Thread((() -> System.out.println("run...."))).start();
+    }
+
+    static <T> void fx(T t) {
+        System.out.println(t.getClass());
+    }
+
+   static class Demo<T>{
+         void fx(T t) {
+            System.out.println(t.getClass());
+        }
     }
 }
